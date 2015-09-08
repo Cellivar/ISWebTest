@@ -1,6 +1,4 @@
-﻿
-@using ISWebTest.ExtensionMethods;
-@using ISWebTest.Controllers;
+﻿@using ISWebTest.Controllers;
 
 <!DOCTYPE html>
 
@@ -12,7 +10,7 @@
 <body>
     <div>
         <span>Select a source JSON file to generate result pages.</span>
-        @using (Html.BeginForm(nameof(HomeController.Analyze), "Home", FormMethod.Post, new { enctype = "multipart/form-data"}))
+        @using (Html.BeginForm(nameof(HomeController.Analyze), "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <label for="filePath">Source file:</label>
             <input type="file" name="filePath" id="filePath" />

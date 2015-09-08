@@ -1,7 +1,4 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model HttpPostedFileBase
 
 <!DOCTYPE html>
 
@@ -11,7 +8,8 @@
     <title>Analyze</title>
 </head>
 <body>
-    <div> 
-    </div>
+<div>
+    @Model.FileName
+</div>
 </body>
 </html>
