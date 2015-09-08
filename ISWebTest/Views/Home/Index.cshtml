@@ -11,7 +11,13 @@
 </head>
 <body>
     <div>
-    <a href="@(Url.Action<HomeController>(nameof(HomeController.Analyze)))">TEST</a>
+        <span>Select a source JSON file to generate result pages.</span>
+        @using (Html.BeginForm(nameof(HomeController.Analyze), "Home", FormMethod.Post, new { enctype = "multipart/form-data"}))
+        {
+            <label for="filePath">Source file:</label>
+            <input type="file" name="filePath" id="filePath" />
+            <input type="submit" />
+        }
     </div>
 </body>
 </html>
