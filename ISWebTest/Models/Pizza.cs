@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace ISWebTest.Models
 {
+    [Serializable]
     public class Pizza
     {
         /// <summary>
@@ -21,6 +23,9 @@ namespace ISWebTest.Models
         /// <summary>
         /// Enum listing the available toppings for pizzas.
         /// </summary>
+        /// <remarks>
+        /// This is obviously missing Ham and Pineapple, the superior pizza toppings.
+        /// </remarks>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ToppingOptions
         {
@@ -29,8 +34,6 @@ namespace ISWebTest.Models
             Peperoni,
             Sausage,
             Onions,
-            Ham,
-            Pineapple, // How dare you heathens leave out my two favorite toppings!
         }
 
         /// <summary>

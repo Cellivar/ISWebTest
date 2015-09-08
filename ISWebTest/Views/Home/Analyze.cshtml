@@ -1,36 +1,40 @@
 ﻿@using ISWebTest.Controllers
+@using ISWebTest.Models
 @model ISWebTest.Models.AnalyzeModel
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width"/>
     <title>Analyze</title>
 </head>
+@StatisticResult(Model.PizzaSizeStatistics, "Pizza Size")
+@StatisticResult(Model.PizzaToppingStatistics, "Pizza Topping Use")
 <body>
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th>Pizza Size</th>
-            <th>Count</th>
-        </tr>
-        </thead>
-        @* Evil little hack to get an index within a foreach loop.*@
-        @foreach (var item in Model.PizzaSizeStatistics.Select((value, i) => new {i, value}))
-        {
-        @*Alterate color of columns (visibility)*@
-            <tr @if (item.i%2 == 0)
-                {
-                    <text>style="background-color: antiquewhite"</text>
-                }>
-                <td>@item.value.StatisticName</td>
-                <td>@item.value.Count</td>
-            </tr>
-        }
-    </table>
-</div>
 <a href="@Url.Action(nameof(HomeController.Analyze), "Home")">Try another file</a>
 </body>
 </html>
+
+@helper StatisticResult(IReadOnlyList<AnalyzeModel.PizzaStatistic> statistics, string statName)
+{
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>@statName</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            @* Evil little hack to get an index within a foreach loop.*@
+            @foreach (var item in statistics.Select((value, i) => new { i, value }))
+            {
+                @*Alterate color of columns (visibility)*@
+                <tr @if (item.i % 2 == 0) { <text> style="background-color: antiquewhite" </text>  }>
+                    <td>@item.value.StatisticName</td>
+                    <td>@item.value.Count</td>
+                </tr>
+            }
+        </table>
+    </div>
+}

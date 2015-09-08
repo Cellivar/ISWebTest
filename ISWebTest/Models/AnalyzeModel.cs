@@ -17,7 +17,14 @@ namespace ISWebTest.Models
                 sizes.Select(size => new PizzaStatistic(size.ToString(), pizzaList.Count(pizza => pizza.Size == size)))
                     .ToList().AsReadOnly();
 
+            // Now do the same for toppings, however we're looking for one topping in a list. Minor syntax difference.
+            var toppings = Enum.GetValues(typeof (Pizza.ToppingOptions)).Cast<Pizza.ToppingOptions>();
 
+            PizzaToppingStatistics =
+                toppings.Select(
+                    top => new PizzaStatistic(top.ToString(), pizzaList.Count(pizza => pizza.Toppings.Contains(top))))
+                    .ToList()
+                    .AsReadOnly();
         }
         
         /// <summary>
@@ -46,6 +53,11 @@ namespace ISWebTest.Models
             /// </summary>
             public int Count { get; }
         }
+
+        /// <summary>
+        /// Gets a list of topping statistics for pizzas.
+        /// </summary>
+        public IReadOnlyList<PizzaStatistic> PizzaToppingStatistics { get; private set; }
         
         /// <summary>
         /// Gets a list of size statistics for pizzas.
