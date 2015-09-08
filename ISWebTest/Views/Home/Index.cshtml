@@ -1,5 +1,7 @@
 ﻿@{
     Layout = null;
+    @using ISWebTest.ExtensionMethods;
+    @using ISWebTest.Controllers;
 }
 
 <!DOCTYPE html>
@@ -11,7 +13,7 @@
 </head>
 <body>
     <div>
-    
+    <a href="@{Url.Action<HomeController>(nameof(HomeController.Analyze))}">TEST</a>
     </div>
 </body>
 </html>
