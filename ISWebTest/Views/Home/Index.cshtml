@@ -9,7 +9,7 @@
 </head>
 <body>
     <div>
-        <span>Select a source JSON file to generate result pages.</span>
+        <span>Select a pizza order JSON file to generate result pages.</span>
         @using (Html.BeginForm(nameof(HomeController.Analyze), "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <label for="filePath">Source file:</label>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -14,7 +13,6 @@ namespace ISWebTest.Models
         public enum SizeOptions
         {
             Slice,
-            Small,
             Medium,
             Large,
             Sheet
